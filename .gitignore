@@ -1,6 +1,6 @@
 HELP.md
 /target/
-!.mvn/wrapper/maven-wrapper.jar
+/.mvn/wrapper/maven-wrapper.jar
 /src/main/resources/data.sql
 
 ### STS ###
@@ -28,3 +28,4 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
