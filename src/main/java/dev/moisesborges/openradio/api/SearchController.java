@@ -4,28 +4,23 @@ import dev.moisesborges.openradio.data.StationRepository;
 import dev.moisesborges.openradio.domain.Station;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController()
 @RequestMapping("/v1")
-public class OpenRadioController {
+public class SearchController {
 
     private final StationRepository stationRepository;
 
-    OpenRadioController(StationRepository stationRepository) {
+    public SearchController(StationRepository stationRepository) {
         this.stationRepository = stationRepository;
     }
 
-    @GetMapping("/home")
-    List<Station> fetchAll() {
-        return stationRepository.findAll();
-    }
-
     @GetMapping("/search")
-    List<Station> search() {
-        return stationRepository.findAll();
+    public List<Station> search(@RequestParam("name") String name) {
+        return this.stationRepository.findByName(name);
     }
-
 }
