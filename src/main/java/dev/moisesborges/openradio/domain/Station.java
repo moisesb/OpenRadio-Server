@@ -4,9 +4,8 @@ import lombok.Data;
 import lombok.experimental.Tolerate;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,6 +20,14 @@ public class Station {
     private String streamUrl;
     @Nullable
     private String thumbnailUrl;
+
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name = "station_genre",
+            joinColumns = @JoinColumn(name = "station_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id", referencedColumnName = "id")
+    )
+    private List<Genre> genres;
 
     public Station(String name, String countryCode, String locality,
                    String streamUrl, @Nullable String thumbnailUrl) {

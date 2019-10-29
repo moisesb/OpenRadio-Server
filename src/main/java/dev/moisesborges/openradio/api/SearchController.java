@@ -21,6 +21,6 @@ public class SearchController {
 
     @GetMapping("/search")
     public List<Station> search(@RequestParam("name") String name) {
-        return this.stationRepository.findStationsByName(name);
+        return stationRepository.findStationsByName(name);
     }
 }

@@ -18,8 +18,12 @@ public class StationController {
     }
 
     @GetMapping("/stations")
-    List<Station> fetchAllStations() {
-        return stationRepository.findAll();
+    List<Station> fetchAllStations(@RequestParam("genre") @Nullable String genre) {
+        if (genre == null) {
+            return stationRepository.findAll();
+        } else {
+            return stationRepository.findStationsByGenre(genre);
+        }
     }
 
     @GetMapping("/stations/{stationId}")
