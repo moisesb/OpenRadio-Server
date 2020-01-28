@@ -13,4 +13,7 @@ public interface StationRepository extends JpaRepository<Station, Long> {
 
     @Query("SELECT s FROM Station s LEFT JOIN s.genres g WHERE g.name = ?1")
     List<Station> findStationsByGenre(String genreName);
+
+    @Query("SELECT s FROM Station s WHERE s.featured = TRUE")
+    List<Station> findFeaturedStations();
 }

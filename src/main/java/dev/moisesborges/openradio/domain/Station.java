@@ -20,6 +20,8 @@ public class Station {
     private String streamUrl;
     @Nullable
     private String thumbnailUrl;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean featured;
 
     @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(
@@ -30,12 +32,14 @@ public class Station {
     private List<Genre> genres;
 
     public Station(String name, String countryCode, String locality,
-                   String streamUrl, @Nullable String thumbnailUrl) {
+                   String streamUrl, @Nullable String thumbnailUrl,
+                   Boolean featured) {
         this.name = name;
         this.countryCode = countryCode;
         this.locality = locality;
         this.streamUrl = streamUrl;
         this.thumbnailUrl = thumbnailUrl;
+        this.featured = featured;
     }
 
     @Tolerate

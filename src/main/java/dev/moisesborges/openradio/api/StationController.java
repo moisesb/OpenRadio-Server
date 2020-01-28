@@ -30,4 +30,9 @@ public class StationController {
     Station fetchStation(@PathVariable("stationId") Long stationId) {
         return stationRepository.findById(stationId).orElseThrow(IllegalArgumentException::new);
     }
+
+    @GetMapping("/stations/featured")
+    List<Station> fetchFeaturedStations() {
+        return stationRepository.findFeaturedStations();
+    }
 }
